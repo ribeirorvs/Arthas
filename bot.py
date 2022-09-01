@@ -2,7 +2,7 @@ import discord
 
 intents = discord.Intents.default()
 intents.message_content = True
-token = 'MTAxMjUyNzUzNTk0ODU3MDc1NA.GyfGA3.guPW0Z8sZaY3D0upZ4UBWDYUwFamSQdyqVP2e0'
+token = 'MTAxMjUyNzUzNTk0ODU3MDc1NA.GmRaO8.-_3GkjZXYPhdWOPnXIpqWZvgNn_GHhBmMmywZY'
 
 client = discord.Client(intents=intents)
 
