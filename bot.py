@@ -1,8 +1,9 @@
 import discord
+import os
 
 intents = discord.Intents.default()
 intents.message_content = True
-token = 'MTAxMjUyNzUzNTk0ODU3MDc1NA.GmRaO8.-_3GkjZXYPhdWOPnXIpqWZvgNn_GHhBmMmywZY'
+token = os.environ.get('TOKEN')
 
 client = discord.Client(intents=intents)
 
