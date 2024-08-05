@@ -15,7 +15,7 @@ async def on_ready():
     guilds = discord.utils.get(client.guilds)
     mutados = discord.utils.get(guilds.channels, name='Mutados')
     deitados = discord.utils.get(guilds.channels, name='Trabalhando deitado')
-    alone = discord.utils.get(guilds.channels, name='SemAmigos.com.br')
+    #alone = discord.utils.get(guilds.channels, name='SemAmigos.com.br')
     for channel in guilds.channels:
         if channel.name != 'general' and channel != mutados:
             print(channel)
@@ -29,27 +29,27 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if message.content == '1':
-        await check_alone()
+    # if message.content == '1':
+    #     await check_alone()
 
 def check_channels():
     for channel in guilds.channels:
-            if channel.name == 'general' or channel == mutados or channel == alone:
+            if channel.name == 'general' or channel == mutados: #or channel == alone:
                 continue
-            else:
-                if len(channel.members) > 0:
-                    return channel
+            # else:
+            #     if len(channel.members) > 0:
+            #         return channel
     return deitados
 
-def check_alone():
-    for channel in guilds.channels:
-        if channel.name == 'general' or channel == mutados or channel == alone:
-            continue
-        elif len(alone.members) > 0:
-            print(len(alone.memnbers))
-            if len(channel.members) == 1:
-                return True
-    return False
+# def check_alone():
+#     for channel in guilds.channels:
+#         if channel.name == 'general' or channel == mutados or channel == alone:
+#             continue
+#         elif len(alone.members) > 0:
+#             print(len(alone.memnbers))
+#             if len(channel.members) == 1:
+#                 return True
+#     return False
 
 @client.event
 async def on_voice_state_update(member, before, after):
@@ -59,8 +59,8 @@ async def on_voice_state_update(member, before, after):
     elif not after.self_deaf and not after.self_mute:
         if member.voice.channel == mutados:
             await member.move_to(check_channels())
-        elif check_alone():
-            print('foi aqui')
-            await member.move_to(alone)
+        # elif check_alone():
+        #     print('foi aqui')
+        #     await member.move_to(alone)
 
 client.run(token)
